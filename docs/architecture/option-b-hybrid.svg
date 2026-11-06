@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="2200" height="2250" viewBox="0 0 2200 2250" font-family="Segoe UI, Segoe UI Web, Arial, sans-serif" role="img" aria-labelledby="t d">
-<title id="t">Option B: licensed data with Azure pricing rules</title><desc id="d">Hybrid option: a licensed data provider delivers matched competitor prices, a small Azure solution applies HoppNShop margin and GST rules, and a review app pushes approved prices back to Shopify.</desc>
+<title id="t">Option B: licensed data with Azure pricing rules</title><desc id="d">Hybrid option: a licensed data provider delivers matched competitor prices, a small Azure solution applies HoppNShop margin, shipping, and rounding rules, and a review app pushes approved prices back to Shopify.</desc>
 <metadata>version=1.0; updated=2026-11-05; generator=build_diagram.py; icons=Azure Architecture Icons V25 and Microsoft Entra icons (Oct 2023). Shopify and the data provider are third-party systems and use neutral glyphs.</metadata>
 <defs>
 <marker id="a-data" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0078D4"/></marker>
@@ -10,7 +10,7 @@
 <rect x="60" y="260" width="560" height="360" rx="8" fill="#FAFAFA" stroke="#8A8886" stroke-width="1.5"/>
 <text text-anchor="start" font-size="34" font-weight="600" fill="#201F1E" data-chk="76,612"><tspan x="76" y="307">Data provider</tspan></text>
 <rect x="700" y="260" width="1440" height="760" rx="8" fill="#F5F9FD" stroke="#8A8886" stroke-width="1.5"/>
-<text text-anchor="start" font-size="34" font-weight="600" fill="#201F1E" data-chk="716,2132"><tspan x="716" y="307">Azure subscription (Central India)</tspan></text>
+<text text-anchor="start" font-size="34" font-weight="600" fill="#201F1E" data-chk="716,2132"><tspan x="716" y="307">Azure subscription (East US 2)</tspan></text>
 <rect x="60" y="1080" width="2080" height="360" rx="8" fill="#FFFFFF" stroke="#605E5C" stroke-width="2"/>
 <text text-anchor="start" font-size="34" font-weight="600" fill="#201F1E" data-chk="76,2132"><tspan x="76" y="1127">HoppNShop</tspan></text>
 <polyline points="380,1192 380,760 852,760" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round" marker-end="url(#a-data)"/>
@@ -55,7 +55,7 @@
 <circle cx="118" cy="1648" r="24" fill="#FFFFFF" stroke="#0078D4" stroke-width="3"/><text x="118" y="1660" text-anchor="middle" font-size="34" font-weight="700" fill="#0078D4">2</text>
 <text x="167" y="1657" font-size="34" fill="#201F1E" data-chk="60,2124"><tspan font-weight="600">Licensed data provider -&gt; price sync:</tspan> the provider delivers matched competitor prices on a schedule</text>
 <circle cx="118" cy="1709" r="24" fill="#FFFFFF" stroke="#6B21A8" stroke-width="3"/><text x="118" y="1721" text-anchor="middle" font-size="34" font-weight="700" fill="#6B21A8">3</text>
-<text x="167" y="1718" font-size="34" fill="#201F1E" data-chk="60,2124"><tspan font-weight="600">Price sync -&gt; pricing rules:</tspan> accepted matches are joined to costs, GST rates, and margin floors</text>
+<text x="167" y="1718" font-size="34" fill="#201F1E" data-chk="60,2124"><tspan font-weight="600">Price sync -&gt; pricing rules:</tspan> accepted matches are joined to costs, shipping charges, and margin floors</text>
 <circle cx="118" cy="1770" r="24" fill="#FFFFFF" stroke="#6B21A8" stroke-width="3"/><text x="118" y="1782" text-anchor="middle" font-size="34" font-weight="700" fill="#6B21A8">4</text>
 <text x="167" y="1779" font-size="34" fill="#201F1E" data-chk="60,2124"><tspan font-weight="600">Pricing rules -&gt; review app:</tspan> recommendations and price-gap status are saved for review</text>
 <circle cx="118" cy="1831" r="24" fill="#FFFFFF" stroke="#B45309" stroke-width="3"/><text x="118" y="1843" text-anchor="middle" font-size="34" font-weight="700" fill="#B45309">5</text>

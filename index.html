@@ -9,17 +9,17 @@
 <body>
   <header class="topbar">
     <div class="brand">
-      <span class="logo" aria-hidden="true">₹</span>
+      <span class="logo" aria-hidden="true">$</span>
       <div>
         <h1>PriceIntel AI</h1>
-        <p>HoppNShop pilot · Amazon India, Flipkart, Meesho</p>
+        <p>HoppNShop pilot · Amazon, Walmart, Target</p>
       </div>
     </div>
     <div class="user">Signed in as <strong>Pricing analyst (demo)</strong></div>
   </header>
 
   <div class="mock-banner" role="note">
-    Clickable mockup with illustrative sample data. Products, costs, and competitor prices are invented and are not real marketplace observations. Snapshot: 5 Nov 2026, 18:00 IST.
+    Clickable mockup with illustrative sample data. Products, costs, and competitor prices are invented and are not real marketplace observations. Snapshot: Nov 5, 2026, 6:00 PM ET.
   </div>
 
   <nav class="tabs" role="tablist">
@@ -98,7 +98,7 @@
             </select>
           </label>
           <label>Match confidence threshold <input type="number" name="threshold" min="0.5" max="0.99" step="0.01"></label>
-          <label class="check"><input type="checkbox" name="landed"> Include delivery charges (landed price)</label>
+          <label class="check"><input type="checkbox" name="landed"> Include shipping charges (landed price)</label>
           <label>Freshness threshold (hours) <input type="number" name="freshHours" min="1" max="240" step="1"></label>
         </fieldset>
         <fieldset>
@@ -107,12 +107,12 @@
           <label>Maximum change per update (%) <input type="number" name="maxChange" min="1" max="50" step="1"></label>
           <label>Rounding
             <select name="rounding">
-              <option value="9">End in 9 (for example ₹1,099)</option>
-              <option value="10">Nearest ₹10</option>
-              <option value="1">Nearest ₹1</option>
+              <option value="99">End in .99 (for example $27.99)</option>
+              <option value="1">Nearest $1</option>
+              <option value="0.01">Nearest cent</option>
             </select>
           </label>
-          <p class="formula">Prices and costs are GST-inclusive in this mockup. Confirm the GST basis with your finance or tax adviser.</p>
+          <p class="formula">Prices and costs exclude sales tax, which US marketplaces add at checkout. Confirm your sales tax obligations with your finance or tax advisor.</p>
         </fieldset>
         <div class="form-actions">
           <button type="button" class="btn" id="resetRules">Reset to defaults</button>

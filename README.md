@@ -1,6 +1,6 @@
 # PriceIntel AI
 
-PriceIntel AI is a clickable mockup of a competitor price intelligence dashboard for a small online retailer selling on Amazon India, Flipkart, and Meesho. It shows how matched competitor prices, margin rules, and human approval can combine into safe price recommendations.
+PriceIntel AI is a clickable mockup of a competitor price intelligence dashboard for a small US online retailer that competes with listings on Amazon, Walmart, and Target. It shows how matched competitor prices, margin rules, and human approval can combine into safe price recommendations.
 
 **Live demo:** <https://mudassar-data-ai.github.io/hop-n-shop/>
 
@@ -20,12 +20,12 @@ Decisions are saved in browser `localStorage`. Use **Reset demo data** on the Au
 ## How the pricing works
 
 1. Listings count toward the benchmark when they are in stock, fresh, and either above the confidence threshold or accepted by a reviewer.
-2. The benchmark is the median, lowest, or confidence-weighted price of those listings, optionally including delivery.
+2. The benchmark is the median, lowest, or confidence-weighted price of those listings, optionally including shipping.
 3. The status compares the store price with the benchmark, within a tolerance.
 4. The recommendation follows the benchmark, limited by the maximum change per update and never below the margin floor: `cost / (1 - minimum margin)`.
-5. The price is rounded, for example to end in 9, without dropping below the floor.
+5. The price is rounded, for example to end in .99, without dropping below the floor.
 
-Prices are treated as GST-inclusive. Confirm the GST basis for your business with a tax adviser.
+Prices are in US dollars and exclude sales tax, which marketplaces add at checkout. Confirm your sales tax obligations with a tax advisor.
 
 ## Run locally
 
@@ -58,4 +58,4 @@ Issues and pull requests are welcome. Keep the app dependency-free, keep all dat
 
 The code and documentation are licensed under the [MIT License](LICENSE).
 
-The architecture diagrams embed Microsoft Azure and Microsoft Entra icons. These icons are owned by Microsoft, are not covered by the MIT License, and are used under Microsoft's [icon terms](https://learn.microsoft.com/azure/architecture/icons/) for architecture diagrams. Amazon, Flipkart, Meesho, and Shopify are trademarks of their respective owners. This project is not affiliated with or endorsed by any of them.
+The architecture diagrams embed Microsoft Azure and Microsoft Entra icons. These icons are owned by Microsoft, are not covered by the MIT License, and are used under Microsoft's [icon terms](https://learn.microsoft.com/azure/architecture/icons/) for architecture diagrams. Amazon, Walmart, Target, and Shopify are trademarks of their respective owners. This project is not affiliated with or endorsed by any of them.

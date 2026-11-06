@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="2200" height="2188" viewBox="0 0 2200 2188" font-family="Segoe UI, Segoe UI Web, Arial, sans-serif" role="img" aria-labelledby="t d">
-<title id="t">Option A: Shopify with a price intelligence SaaS app</title><desc id="d">Buy option: the Shopify store syncs products to a vendor-hosted price intelligence app that collects marketplace prices under its own data licences and suggests prices for the pricing team to approve.</desc>
+<title id="t">Option A: Shopify with a price intelligence SaaS app</title><desc id="d">Buy option: the Shopify store syncs products to a vendor-hosted price intelligence app that collects marketplace prices under its own data licenses and suggests prices for the pricing team to approve.</desc>
 <metadata>version=1.0; updated=2026-11-05; generator=build_diagram.py; icons=Shopify, the SaaS app, and marketplaces are third-party systems and use neutral glyphs.</metadata>
 <defs>
 <marker id="a-data" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0078D4"/></marker>
@@ -18,7 +18,7 @@
 <polyline points="1852,1300 428,1300" fill="none" stroke="#B45309" stroke-width="3" stroke-linejoin="round" stroke-dasharray="4 6" marker-end="url(#a-review)"/>
 <rect x="312" y="372" width="96" height="96" rx="12" fill="#FFFFFF" stroke="#605E5C" stroke-width="2"/>
 <text text-anchor="middle" font-size="34" font-weight="600" fill="#201F1E" data-chk="316,404"><tspan x="360" y="432">WEB</tspan></text>
-<text text-anchor="middle" font-size="34" font-weight="600" fill="#201F1E" data-chk="140,580"><tspan x="360" y="514">Amazon India, Flipkart,</tspan><tspan x="360" y="558">and Meesho</tspan></text>
+<text text-anchor="middle" font-size="34" font-weight="600" fill="#201F1E" data-chk="140,580"><tspan x="360" y="514">Amazon, Walmart,</tspan><tspan x="360" y="558">and Target</tspan></text>
 <rect x="1052" y="832" width="96" height="96" rx="12" fill="#FFFFFF" stroke="#605E5C" stroke-width="2"/>
 <text text-anchor="middle" font-size="34" font-weight="600" fill="#201F1E" data-chk="1056,1144"><tspan x="1100" y="892">SaaS</tspan></text>
 <text text-anchor="middle" font-size="34" font-weight="600" fill="#201F1E" data-chk="920,1280"><tspan x="1100" y="974">Price intelligence</tspan><tspan x="1100" y="1018">app</tspan></text>
@@ -41,7 +41,7 @@
 <circle cx="118" cy="1647" r="24" fill="#FFFFFF" stroke="#0078D4" stroke-width="3"/><text x="118" y="1659" text-anchor="middle" font-size="34" font-weight="700" fill="#0078D4">1</text>
 <text x="167" y="1656" font-size="34" fill="#201F1E" data-chk="60,2124"><tspan font-weight="600">Shopify store -&gt; price intelligence app:</tspan> the Shopify app syncs products, variants, and costs</text>
 <circle cx="118" cy="1708" r="24" fill="#FFFFFF" stroke="#0078D4" stroke-width="3"/><text x="118" y="1720" text-anchor="middle" font-size="34" font-weight="700" fill="#0078D4">2</text>
-<text x="167" y="1717" font-size="34" fill="#201F1E" data-chk="60,2124"><tspan font-weight="600">Amazon India, Flipkart, and Meesho -&gt; price intelligence app:</tspan> vendor matches prices</text>
+<text x="167" y="1717" font-size="34" fill="#201F1E" data-chk="60,2124"><tspan font-weight="600">Amazon, Walmart, and Target -&gt; price intelligence app:</tspan> vendor matches prices</text>
 <circle cx="118" cy="1769" r="24" fill="#FFFFFF" stroke="#B45309" stroke-width="3"/><text x="118" y="1781" text-anchor="middle" font-size="34" font-weight="700" fill="#B45309">3</text>
 <text x="167" y="1778" font-size="34" fill="#201F1E" data-chk="60,2124"><tspan font-weight="600">Price intelligence app -&gt; pricing team:</tspan> gaps, alerts, and suggested prices appear in the dashboard</text>
 <circle cx="118" cy="1830" r="24" fill="#FFFFFF" stroke="#B45309" stroke-width="3"/><text x="118" y="1842" text-anchor="middle" font-size="34" font-weight="700" fill="#B45309">4</text>

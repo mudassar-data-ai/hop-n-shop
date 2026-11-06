@@ -3,13 +3,13 @@
   "title": "Option B: licensed data with Azure pricing rules",
   "subtitle": "Hybrid: buy matched competitor data, own the pricing rules and approval workflow",
   "status": ["Architecture option B", "Hybrid", "Updated 2026-11-05"],
-  "description": "Hybrid option: a licensed data provider delivers matched competitor prices, a small Azure solution applies HoppNShop margin and GST rules, and a review app pushes approved prices back to Shopify.",
+  "description": "Hybrid option: a licensed data provider delivers matched competitor prices, a small Azure solution applies HoppNShop margin, shipping, and rounding rules, and a review app pushes approved prices back to Shopify.",
   "version": "1.0",
   "updated": "2026-11-05",
   "generator": "build_diagram.py",
   "icons_note": "Azure Architecture Icons V25 and Microsoft Entra icons (Oct 2023). Shopify and the data provider are third-party systems and use neutral glyphs.",
   "canvas": { "width": 2200 },
-  "proper_nouns": ["Shopify Admin API", "Admin", "SKUs", "Option", "B", "Shopify", "HoppNShop", "Azure", "Azure Functions", "Static Web Apps", "Azure Database for PostgreSQL", "PostgreSQL", "Entra", "Entra ID", "Central India", "India", "GST", "API"],
+  "proper_nouns": ["Shopify Admin API", "Admin", "SKUs", "Option", "B", "Shopify", "HoppNShop", "Azure", "Azure Functions", "Static Web Apps", "Azure Database for PostgreSQL", "PostgreSQL", "Entra", "Entra ID", "East US 2", "East", "US", "API"],
   "icons": {
     "users": "icons/azure/Azure_Public_Service_Icons/Icons/identity/10230-icon-service-Users.svg",
     "func": "icons/azure/Azure_Public_Service_Icons/Icons/compute/10029-icon-service-Function-Apps.svg",
@@ -24,7 +24,7 @@
   },
   "scopes": [
     { "id": "z-prov", "x": 60, "y": 260, "w": 560, "h": 360, "label": "Data provider", "kind": "group" },
-    { "id": "z-az", "x": 700, "y": 260, "w": 1440, "h": 760, "label": "Azure subscription (Central India)", "kind": "subscription" },
+    { "id": "z-az", "x": 700, "y": 260, "w": 1440, "h": 760, "label": "Azure subscription (East US 2)", "kind": "subscription" },
     { "id": "z-hns", "x": 60, "y": 1080, "w": 2080, "h": 360, "label": "HoppNShop", "kind": "tenant" }
   ],
   "nodes": [
@@ -56,7 +56,7 @@
   "summary": [
     { "n": 1, "flow": "Shopify store -> price sync:", "outcome": "the Shopify Admin API exports SKUs, prices, and unit costs" },
     { "n": 2, "flow": "Licensed data provider -> price sync:", "outcome": "the provider delivers matched competitor prices on a schedule" },
-    { "n": 3, "flow": "Price sync -> pricing rules:", "outcome": "accepted matches are joined to costs, GST rates, and margin floors" },
+    { "n": 3, "flow": "Price sync -> pricing rules:", "outcome": "accepted matches are joined to costs, shipping charges, and margin floors" },
     { "n": 4, "flow": "Pricing rules -> review app:", "outcome": "recommendations and price-gap status are saved for review" },
     { "n": 5, "flow": "Review app -> pricing team:", "outcome": "analysts approve or reject prices with the evidence in view" },
     { "n": 6, "flow": "Pricing team -> Shopify store:", "outcome": "approved prices are pushed through the Shopify Admin API" }

@@ -10,7 +10,7 @@
     freshHours: 48,
     tolerance: 3,
     maxChange: 20,
-    rounding: "9"
+    rounding: "99"
   };
   const STATUS_LABEL = {
     overpriced: "Overpriced",
@@ -19,8 +19,8 @@
     insufficient: "Insufficient data"
   };
 
-  const inr = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
-  const fmt = (n) => (n == null || Number.isNaN(n) ? "-" : inr.format(n));
+  const usd = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
+  const fmt = (n) => (n == null || Number.isNaN(n) ? "-" : usd.format(n));
   const pct = (n, digits = 1) => (n == null ? "-" : `${n > 0 ? "+" : ""}${(n * 100).toFixed(digits)}%`);
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const $ = (sel) => document.querySelector(sel);
@@ -39,7 +39,7 @@
     num("minMargin", 0, 90); num("targetMargin", 0, 90); num("threshold", 0.5, 0.99);
     num("freshHours", 1, 240); num("tolerance", 0, 20); num("maxChange", 1, 50);
     if (["median", "lowest", "weighted"].includes(raw.policy)) s.policy = raw.policy;
-    if (["9", "10", "1"].includes(raw.rounding)) s.rounding = raw.rounding;
+    if (["99", "1", "0.01"].includes(raw.rounding)) s.rounding = raw.rounding;
     if (typeof raw.landed === "boolean") s.landed = raw.landed;
     return s;
   }
@@ -113,13 +113,15 @@
     return prices.length % 2 ? prices[m] : (prices[m - 1] + prices[m]) / 2;
   }
 
+  // Works in whole cents to avoid floating-point drift.
   function roundPrice(p, mode, direction) {
-    const step = mode === "1" ? 1 : 10;
-    if (mode === "9") {
-      const down = Math.floor((p + 1) / 10) * 10 - 1;
-      return direction === "up" ? (down >= p ? down : down + 10) : down;
+    const cents = Math.round(p * 100 * 1000) / 1000;
+    if (mode === "99") {
+      const down = Math.floor((cents + 1) / 100) * 100 - 1;
+      return (direction === "up" ? (down >= cents ? down : down + 100) : down) / 100;
     }
-    return direction === "up" ? Math.ceil(p / step) * step : Math.round(p / step) * step;
+    const step = mode === "1" ? 100 : 1;
+    return (direction === "up" ? Math.ceil(cents / step) * step : Math.round(cents / step) * step) / 100;
   }
 
   function evaluate(product) {
@@ -154,7 +156,7 @@
     const recMargin = (rounded - product.cost) / rounded;
 
     const policyName = { median: "median", lowest: "lowest valid price", weighted: "confidence-weighted average" }[s.policy];
-    let rationale = `Benchmark is the ${policyName} of ${used.length} accepted listing${used.length > 1 ? "s" : ""}${s.landed ? " including delivery" : ""}: ${fmt(benchmark)}. `;
+    let rationale = `Benchmark is the ${policyName} of ${used.length} accepted listing${used.length > 1 ? "s" : ""}${s.landed ? " including shipping" : ""}: ${fmt(benchmark)}. `;
     rationale += `Your price is ${pct(gap)} versus the benchmark, so the product is ${STATUS_LABEL[status].toLowerCase()} (tolerance ±${s.tolerance}%). `;
     if (floorApplied) rationale += `Matching the market would drop margin below the ${s.minMargin}% minimum, so the price is held at the margin floor. `;
     else if (flags.includes("change capped")) rationale += `The move is limited to ${s.maxChange}% per update. `;
@@ -213,9 +215,9 @@
         <td class="prod" data-open="${p.sku}"><div class="name">${esc(p.name)}</div><div class="meta">${p.sku} · ${esc(p.category)} · ${r.used.length}/${p.offers.length} listings used</div></td>
         <td class="num">${fmt(p.cost)}</td>
         <td class="num">${fmt(p.price)}<div class="meta muted">${(r.margin * 100).toFixed(1)}% margin</div></td>
-        <td class="num">${fmt(r.benchmark && Math.round(r.benchmark))}</td>
+        <td class="num">${fmt(r.benchmark)}</td>
         <td class="num ${gapCls}">${pct(r.gap)}</td>
-        <td class="num">${fmt(Math.ceil(r.floor))}</td>
+        <td class="num">${fmt(Math.ceil(r.floor * 100) / 100)}</td>
         <td class="num"><strong>${fmt(r.recommended)}</strong>${r.flags.map((f) => `<span class="floor-flag">${f}</span>`).join("")}</td>
         <td><span class="pill ${r.status}">${STATUS_LABEL[r.status]}</span></td>
         <td><div class="decision">${d === "pending"
@@ -255,7 +257,7 @@
         <div>
           <div class="vs">${MARKETPLACES[o.marketplace].name} candidate · <span class="pill ${o.type}">${o.type}</span> · confidence ${o.confidence.toFixed(2)}</div>
           <h3>${esc(o.title)}</h3>
-          <div class="muted">${fmt(o.price)}${o.delivery ? ` + ${fmt(o.delivery)} delivery` : " · free delivery"}</div>
+          <div class="muted">${fmt(o.price)}${o.delivery ? ` + ${fmt(o.delivery)} shipping` : " · free shipping"}</div>
           ${o.note ? `<div class="note">⚠ ${esc(o.note)}</div>` : ""}
           ${signalBars(o.signals)}
         </div>
@@ -268,7 +270,7 @@
 
   function renderAudit() {
     $("#auditTable tbody").innerHTML = state.audit.length ? state.audit.map((a) => `
-      <tr><td>${new Date(a.time).toLocaleString("en-IN")}</td><td>${esc(a.user)}</td><td>${esc(a.action)}</td><td style="white-space:normal">${esc(a.details)}</td></tr>`).join("")
+      <tr><td>${new Date(a.time).toLocaleString("en-US")}</td><td>${esc(a.user)}</td><td>${esc(a.action)}</td><td style="white-space:normal">${esc(a.details)}</td></tr>`).join("")
       : `<tr><td colspan="4" class="muted" style="text-align:center;padding:30px">No activity yet.</td></tr>`;
   }
 
@@ -291,23 +293,23 @@
     $("#detailBody").innerHTML = `
       <div class="calc">
         <div><div class="k">Current margin</div><div class="v">${(r.margin * 100).toFixed(1)}%</div></div>
-        <div><div class="k">Benchmark</div><div class="v">${fmt(r.benchmark && Math.round(r.benchmark))}</div></div>
+        <div><div class="k">Benchmark</div><div class="v">${fmt(r.benchmark)}</div></div>
         <div><div class="k">Gap vs benchmark</div><div class="v">${pct(r.gap)}</div></div>
-        <div><div class="k">Margin floor (${state.settings.minMargin}%)</div><div class="v">${fmt(Math.ceil(r.floor))}</div></div>
-        <div><div class="k">Target price (${state.settings.targetMargin}%)</div><div class="v">${fmt(Math.ceil(r.target))}</div></div>
+        <div><div class="k">Margin floor (${state.settings.minMargin}%)</div><div class="v">${fmt(Math.ceil(r.floor * 100) / 100)}</div></div>
+        <div><div class="k">Target price (${state.settings.targetMargin}%)</div><div class="v">${fmt(Math.ceil(r.target * 100) / 100)}</div></div>
         <div><div class="k">Recommended</div><div class="v">${fmt(r.recommended)}</div></div>
       </div>
       <div class="rationale"><strong><span class="pill ${r.status}">${STATUS_LABEL[r.status]}</span></strong> ${esc(r.rationale)}</div>
       <div class="table-wrap">
         <table class="grid">
-          <thead><tr><th>Marketplace</th><th>Listing</th><th class="num">Price</th><th class="num">Delivery</th><th>Match</th><th>Signals</th><th>Observed</th><th>Used?</th><th></th></tr></thead>
+          <thead><tr><th>Marketplace</th><th>Listing</th><th class="num">Price</th><th class="num">Shipping</th><th>Match</th><th>Signals</th><th>Observed</th><th>Used?</th><th></th></tr></thead>
           <tbody>${r.rows.map(({ offer: o, used, reason }) => {
             const dec = state.offerDecisions[o.id];
             const age = ageHours(o);
             return `<tr class="${used ? "" : "excluded"}">
               <td>${MARKETPLACES[o.marketplace].name}</td>
               <td style="white-space:normal;min-width:200px;max-width:280px"><a href="${MARKETPLACES[o.marketplace].search}${encodeURIComponent(p.name)}" target="_blank" rel="noopener">${esc(o.title)}</a>${o.note ? `<div class="floor-flag">⚠ ${esc(o.note)}</div>` : ""}${o.inStock ? "" : `<div class="floor-flag">Out of stock</div>`}</td>
-              <td class="num">${fmt(o.price)}<div class="meta muted">MRP ${fmt(o.mrp)}</div></td>
+              <td class="num">${fmt(o.price)}<div class="meta muted">List ${fmt(o.listPrice)}</div></td>
               <td class="num">${o.delivery ? fmt(o.delivery) : "Free"}</td>
               <td><span class="pill ${o.type}">${o.type}</span><div class="meta muted">${o.confidence.toFixed(2)}</div></td>
               <td style="min-width:210px">${signalBars(o.signals)}</td>
@@ -366,7 +368,7 @@
   function exportCsv() {
     const approved = Object.entries(state.recDecisions).filter(([, v]) => v.decision === "approved");
     if (!approved.length) { toast("No approved prices to export yet."); return; }
-    const lines = [["sku", "product", "current_price_inr", "new_price_inr", "approved_at"].join(",")];
+    const lines = [["sku", "product", "current_price_usd", "new_price_usd", "approved_at"].join(",")];
     // Quote every cell and neutralize leading formula characters so spreadsheets don't execute them.
     const cell = (v) => {
       let s = String(v);
@@ -375,7 +377,7 @@
     };
     for (const [sku, v] of approved) {
       const p = PRODUCTS.find((x) => x.sku === sku);
-      lines.push([sku, p.name, v.previous, v.price, v.at].map(cell).join(","));
+      lines.push([sku, p.name, v.previous.toFixed(2), v.price.toFixed(2), v.at].map(cell).join(","));
     }
     const blob = new Blob([lines.join("\n")], { type: "text/csv" });
     const a = document.createElement("a");

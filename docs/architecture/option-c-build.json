@@ -1,15 +1,15 @@
 {
   "id": "option-c-build",
   "title": "Option C: custom PriceIntel AI platform on Azure",
-  "subtitle": "HoppNShop catalogue matched against Amazon India, Flipkart, and Meesho",
+  "subtitle": "HoppNShop catalog matched against Amazon, Walmart, and Target",
   "status": ["Architecture option C", "Build", "Updated 2026-11-05"],
-  "description": "Executive view of PriceIntel AI: catalogue import, permitted marketplace data collection, AI product matching, deterministic margin-aware pricing, and human approval before any price is published back to the HoppNShop store.",
+  "description": "Executive view of PriceIntel AI: catalog import, permitted marketplace data collection, AI product matching, deterministic margin-aware pricing, and human approval before any price is published back to the HoppNShop store.",
   "version": "1.0",
   "updated": "2026-11-06",
   "generator": "build_diagram.py",
-  "icons_note": "Azure Architecture Icons V25 and Microsoft Entra icons (Oct 2023). Marketplace data sources and the store catalogue are external systems and use neutral glyphs.",
+  "icons_note": "Azure Architecture Icons V25 and Microsoft Entra icons (Oct 2023). Marketplace data sources and the store catalog are external systems and use neutral glyphs.",
   "canvas": { "width": 2600 },
-  "proper_nouns": ["Shopify Admin API", "Admin", "Option", "C", "Shopify", "PriceIntel", "AI", "HoppNShop", "SKUs", "SKU", "Amazon", "India", "Flipkart", "Meesho", "Azure", "Azure OpenAI", "Azure AI Search", "AI Search", "Container Apps", "Azure Functions", "Service Bus", "Key Vault", "Application Insights", "Entra", "Entra ID", "PostgreSQL", "Blob Storage", "CSV", "Excel", "Central India", "Azure Database for PostgreSQL", "URLs", "API", "APIs"],
+  "proper_nouns": ["Shopify Admin API", "Admin", "Option", "C", "Shopify", "PriceIntel", "AI", "HoppNShop", "SKUs", "SKU", "Amazon", "Walmart", "Target", "Azure", "Azure OpenAI", "Azure AI Search", "AI Search", "Container Apps", "Azure Functions", "Service Bus", "Key Vault", "Application Insights", "Entra", "Entra ID", "PostgreSQL", "Blob Storage", "CSV", "Excel", "East US 2", "East", "US", "Azure Database for PostgreSQL", "URLs", "API", "APIs"],
   "icons": {
     "users": "icons/azure/Azure_Public_Service_Icons/Icons/identity/10230-icon-service-Users.svg",
     "aca": "icons/azure/Azure_Public_Service_Icons/Icons/other/02989-icon-service-Container-Apps-Environments.svg",
@@ -24,13 +24,13 @@
     "entra": "icons/entra/Microsoft Entra architecture icons - Oct 2023/Microsoft Entra color icons SVG/Microsoft Entra ID color icon.svg"
   },
   "categories": {
-    "data": { "color": "#0078D4", "dash": null, "label": "Catalogue and market data: steps 1, 2, 3, 4" },
+    "data": { "color": "#0078D4", "dash": null, "label": "Catalog and market data: steps 1, 2, 3, 4" },
     "ai": { "color": "#6B21A8", "dash": "10 6", "label": "AI matching and pricing: steps 5, 6, 7" },
     "review": { "color": "#B45309", "dash": "4 6", "label": "Review and approval: steps 8, 9, 10" }
   },
   "scopes": [
     { "id": "z-src", "x": 60, "y": 400, "w": 360, "h": 380, "label": "External sources", "kind": "group" },
-    { "id": "z-az", "x": 480, "y": 320, "w": 2020, "h": 1200, "label": "Azure subscription (Central India)", "kind": "subscription" },
+    { "id": "z-az", "x": 480, "y": 320, "w": 2020, "h": 1200, "label": "Azure subscription (East US 2)", "kind": "subscription" },
     { "id": "z-ai", "x": 1200, "y": 400, "w": 520, "h": 380, "label": "AI services", "kind": "group" },
     { "id": "z-data", "x": 1760, "y": 400, "w": 700, "h": 380, "label": "Data and evidence", "kind": "group" },
     { "id": "z-plat", "x": 520, "y": 1120, "w": 1160, "h": 360, "label": "Platform services", "kind": "group" },
@@ -38,7 +38,7 @@
   ],
   "nodes": [
     { "id": "sources", "cx": 240, "cy": 560, "title": ["Marketplace", "data sources"], "glyph": "API", "tile_w": 280 },
-    { "id": "import", "cx": 700, "cy": 940, "title": ["Catalogue import", "Azure Functions"], "icon": "func", "tile_w": 360 },
+    { "id": "import", "cx": 700, "cy": 940, "title": ["Catalog import", "Azure Functions"], "icon": "func", "tile_w": 360 },
     { "id": "collect", "cx": 1080, "cy": 940, "title": ["Collectors", "Container Apps"], "icon": "aca", "tile_w": 320 },
     { "id": "match", "cx": 1460, "cy": 940, "title": ["Matching engine", "Container Apps"], "icon": "aca", "tile_w": 320, "size": 120 },
     { "id": "pricing", "cx": 1840, "cy": 940, "title": ["Pricing engine", "Container Apps"], "icon": "aca", "tile_w": 320, "size": 120 },
@@ -79,8 +79,8 @@
     { "n": 10, "cat": "review", "cx": 1200, "cy": 1680, "edge": "e10" }
   ],
   "summary": [
-    { "n": 1, "flow": "Shopify store -> catalogue import:", "outcome": "SKUs, specs, images, and costs arrive by the Shopify Admin API or CSV" },
-    { "n": 2, "flow": "Catalogue import -> collectors:", "outcome": "clean SKUs are queued for discovery on a per-category schedule" },
+    { "n": 1, "flow": "Shopify store -> catalog import:", "outcome": "SKUs, specs, images, and costs arrive by the Shopify Admin API or CSV" },
+    { "n": 2, "flow": "Catalog import -> collectors:", "outcome": "clean SKUs are queued for discovery on a per-category schedule" },
     { "n": 3, "flow": "Marketplace data sources -> collectors:", "outcome": "permitted APIs and licensed feeds return prices and offers" },
     { "n": 4, "flow": "Collectors -> matching engine:", "outcome": "candidate listings arrive with source URLs and timestamps" },
     { "n": 5, "flow": "Matching engine -> AI services:", "outcome": "text and image embeddings plus attribute extraction score each match" },

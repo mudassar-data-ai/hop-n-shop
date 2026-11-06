@@ -3,13 +3,13 @@
   "title": "Option A: Shopify with a price intelligence SaaS app",
   "subtitle": "Buy: the vendor collects, matches, and suggests prices; HoppNShop approves",
   "status": ["Architecture option A", "Buy", "Updated 2026-11-05"],
-  "description": "Buy option: the Shopify store syncs products to a vendor-hosted price intelligence app that collects marketplace prices under its own data licences and suggests prices for the pricing team to approve.",
+  "description": "Buy option: the Shopify store syncs products to a vendor-hosted price intelligence app that collects marketplace prices under its own data licenses and suggests prices for the pricing team to approve.",
   "version": "1.0",
   "updated": "2026-11-05",
   "generator": "build_diagram.py",
   "icons_note": "Shopify, the SaaS app, and marketplaces are third-party systems and use neutral glyphs.",
   "canvas": { "width": 2200 },
-  "proper_nouns": ["Option", "A", "Shopify", "SaaS", "HoppNShop", "Amazon", "India", "Flipkart", "Meesho"],
+  "proper_nouns": ["Option", "A", "Shopify", "SaaS", "HoppNShop", "Amazon", "Walmart", "Target"],
   "icons": {
     "users": "icons/azure/Azure_Public_Service_Icons/Icons/identity/10230-icon-service-Users.svg"
   },
@@ -23,7 +23,7 @@
     { "id": "z-hns", "x": 60, "y": 1140, "w": 2080, "h": 360, "label": "HoppNShop", "kind": "tenant" }
   ],
   "nodes": [
-    { "id": "mkt", "cx": 360, "cy": 420, "title": ["Amazon India, Flipkart,", "and Meesho"], "glyph": "WEB", "tile_w": 440 },
+    { "id": "mkt", "cx": 360, "cy": 420, "title": ["Amazon, Walmart,", "and Target"], "glyph": "WEB", "tile_w": 440 },
     { "id": "saas", "cx": 1100, "cy": 880, "title": ["Price intelligence", "app"], "glyph": "SaaS", "tile_w": 360 },
     { "id": "shop", "cx": 380, "cy": 1300, "title": ["Shopify", "store"], "glyph": "SHOP", "tile_w": 280 },
     { "id": "team", "cx": 1900, "cy": 1300, "title": ["Pricing", "team"], "icon": "users", "tile_w": 280 }
@@ -42,7 +42,7 @@
   ],
   "summary": [
     { "n": 1, "flow": "Shopify store -> price intelligence app:", "outcome": "the Shopify app syncs products, variants, and costs" },
-    { "n": 2, "flow": "Amazon India, Flipkart, and Meesho -> price intelligence app:", "outcome": "vendor matches prices" },
+    { "n": 2, "flow": "Amazon, Walmart, and Target -> price intelligence app:", "outcome": "vendor matches prices" },
     { "n": 3, "flow": "Price intelligence app -> pricing team:", "outcome": "gaps, alerts, and suggested prices appear in the dashboard" },
     { "n": 4, "flow": "Pricing team -> Shopify store:", "outcome": "approved prices are updated in Shopify, manually or by the app" }
   ]
