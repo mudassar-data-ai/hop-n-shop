@@ -136,3 +136,15 @@ dialog::backdrop { background: rgba(20, 20, 40, 0.45); }
   .review-card { grid-template-columns: 1fr; }
   .user { display: none; }
 }
+
+/* Competitor price columns */
+.grid th.comp-head { color: var(--ink, #1f2330); }
+.grid td.comp { background: #fbfbfe; padding-left: 8px; padding-right: 8px; }
+#recTable th, #recTable td { padding-left: 8px; padding-right: 8px; }
+#recTable td.prod { white-space: normal; min-width: 190px; max-width: 230px; }
+.grid td.comp { width: 104px; max-width: 120px; }
+.grid td.comp .meta { font-size: 11px; color: var(--muted); white-space: normal; line-height: 1.25; }
+.grid td.comp.excluded { color: #9aa0b4; }
+.comp-key { margin: 8px 4px 0; font-size: 12px; color: var(--muted); }
+.comp-key .swatch { display: inline-block; padding: 0 6px; border-radius: 4px; background: #effaf3; color: #0f7a3a; font-weight: 700; }
+.grid td.comp.lowest { color: #0f7a3a; font-weight: 700; background: #effaf3; }

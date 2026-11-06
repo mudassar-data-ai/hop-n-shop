@@ -9,7 +9,7 @@ PriceIntel AI is a clickable mockup of a competitor price intelligence dashboard
 
 ## Features
 
-* **Recommendations:** each product is marked overpriced, competitive, underpriced, or insufficient data, with its competitor benchmark, margin floor, and recommended price. You can filter, search, approve or reject a recommendation, or bulk-approve several.
+* **Recommendations:** each product is marked overpriced, competitive, underpriced, or insufficient data, with its lowest Amazon, Walmart, and Target price side by side (cheapest highlighted, excluded listings greyed out), competitor benchmark, margin floor, and recommended price. You can filter, search, approve or reject a recommendation, or bulk-approve several.
 * **Product detail:** every competitor listing with its match confidence, text, image, and attribute signals, freshness, and whether it counted toward the benchmark, plus a plain-English rationale.
 * **Match review:** low-confidence listings, such as a pack of 2 or a different size, wait for a reviewer to accept or reject them. Accepting one recalculates the benchmark.
 * **Pricing rules:** minimum and target margin, benchmark policy (median, lowest, or confidence-weighted), confidence threshold, freshness, tolerance, maximum change per update, and rounding.

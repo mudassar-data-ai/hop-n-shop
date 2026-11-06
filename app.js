@@ -203,6 +203,30 @@
       (!dec || decisionOf(r.product.sku) === dec));
   }
 
+  // Lowest price per marketplace. Listings that count toward the benchmark win over ones that don't.
+  function competitorPrices(r) {
+    const out = {};
+    for (const mp of Object.keys(MARKETPLACES)) {
+      const rows = r.rows.filter((x) => x.offer.marketplace === mp);
+      const pool = rows.filter((x) => x.used).length ? rows.filter((x) => x.used) : rows.filter((x) => x.offer.inStock);
+      if (!pool.length) { out[mp] = rows.length ? { none: "Out of stock" } : { none: "Not listed" }; continue; }
+      const best = pool.reduce((a, b) => (effectivePrice(b.offer) < effectivePrice(a.offer) ? b : a));
+      out[mp] = { offer: best.offer, used: best.used, reason: best.reason };
+    }
+    const usedPrices = Object.values(out).filter((c) => c.used).map((c) => effectivePrice(c.offer));
+    const cheapest = usedPrices.length ? Math.min(...usedPrices) : null;
+    return { out, cheapest };
+  }
+
+  function competitorCell(c, cheapest) {
+    if (c.none) return `<td class="num comp muted">-<div class="meta">${c.none}</div></td>`;
+    const o = c.offer;
+    const isLow = c.used && effectivePrice(o) === cheapest;
+    const ship = o.delivery ? `+ ${fmt(o.delivery)} ship` : "free ship";
+    const meta = c.used ? ship : c.reason.toLowerCase();
+    return `<td class="num comp${c.used ? "" : " excluded"}${isLow ? " lowest" : ""}" title="${esc(MARKETPLACES[o.marketplace].name)}: ${esc(o.title)}${c.used ? "" : " (not in benchmark: " + esc(c.reason) + ")"}">${fmt(o.price)}<div class="meta">${esc(meta)}</div></td>`;
+  }
+
   function renderTable(results) {
     const rows = filtered(results);
     $("#recTable tbody").innerHTML = rows.length ? rows.map((r) => {
@@ -210,11 +234,12 @@
       const d = decisionOf(p.sku);
       const canDecide = r.recommended != null;
       const gapCls = r.gap > 0 ? "gap-pos" : r.gap < 0 ? "gap-neg" : "";
+      const comp = competitorPrices(r);
       return `<tr data-sku="${p.sku}">
         <td><input type="checkbox" class="rowSel" data-sku="${p.sku}" ${selected.has(p.sku) ? "checked" : ""} ${canDecide ? "" : "disabled"} aria-label="Select ${esc(p.name)}"></td>
         <td class="prod" data-open="${p.sku}"><div class="name">${esc(p.name)}</div><div class="meta">${p.sku} · ${esc(p.category)} · ${r.used.length}/${p.offers.length} listings used</div></td>
-        <td class="num">${fmt(p.cost)}</td>
-        <td class="num">${fmt(p.price)}<div class="meta muted">${(r.margin * 100).toFixed(1)}% margin</div></td>
+        <td class="num">${fmt(p.price)}<div class="meta muted">cost ${fmt(p.cost)} · ${(r.margin * 100).toFixed(1)}%</div></td>
+        ${Object.keys(MARKETPLACES).map((mp) => competitorCell(comp.out[mp], comp.cheapest)).join("")}
         <td class="num">${fmt(r.benchmark)}</td>
         <td class="num ${gapCls}">${pct(r.gap)}</td>
         <td class="num">${fmt(Math.ceil(r.floor * 100) / 100)}</td>
@@ -224,7 +249,7 @@
           ? (canDecide ? `<button class="btn small ok" data-approve="${p.sku}">Approve</button><button class="btn small no" data-reject="${p.sku}">Reject</button>` : `<span class="muted">Review matches</span>`)
           : `<span class="pill ${d}">${d === "approved" ? "Approved" : "Rejected"}</span><button class="btn small" data-undo="${p.sku}" title="Undo">Undo</button>`}</div></td>
       </tr>`;
-    }).join("") : `<tr><td colspan="10" class="muted" style="text-align:center;padding:30px">No products match these filters.</td></tr>`;
+    }).join("") : `<tr><td colspan="12" class="muted" style="text-align:center;padding:30px">No products match these filters.</td></tr>`;
     updateBulk();
   }
 
