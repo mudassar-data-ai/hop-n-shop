@@ -1,0 +1,64 @@
+{
+  "id": "option-b-hybrid",
+  "title": "Option B: licensed data with Azure pricing rules",
+  "subtitle": "Hybrid: buy matched competitor data, own the pricing rules and approval workflow",
+  "status": ["Architecture option B", "Hybrid", "Updated 2026-11-05"],
+  "description": "Hybrid option: a licensed data provider delivers matched competitor prices, a small Azure solution applies HoppNShop margin and GST rules, and a review app pushes approved prices back to Shopify.",
+  "version": "1.0",
+  "updated": "2026-11-05",
+  "generator": "build_diagram.py",
+  "icons_note": "Azure Architecture Icons V25 and Microsoft Entra icons (Oct 2023). Shopify and the data provider are third-party systems and use neutral glyphs.",
+  "canvas": { "width": 2200 },
+  "proper_nouns": ["Shopify Admin API", "Admin", "SKUs", "Option", "B", "Shopify", "HoppNShop", "Azure", "Azure Functions", "Static Web Apps", "Azure Database for PostgreSQL", "PostgreSQL", "Entra", "Entra ID", "Central India", "India", "GST", "API"],
+  "icons": {
+    "users": "icons/azure/Azure_Public_Service_Icons/Icons/identity/10230-icon-service-Users.svg",
+    "func": "icons/azure/Azure_Public_Service_Icons/Icons/compute/10029-icon-service-Function-Apps.svg",
+    "swa": "icons/azure/Azure_Public_Service_Icons/Icons/web/01007-icon-service-Static-Apps.svg",
+    "pg": "icons/azure/Azure_Public_Service_Icons/Icons/databases/10131-icon-service-Azure-Database-PostgreSQL-Server.svg",
+    "entra": "icons/entra/Microsoft Entra architecture icons - Oct 2023/Microsoft Entra color icons SVG/Microsoft Entra ID color icon.svg"
+  },
+  "categories": {
+    "data": { "color": "#0078D4", "dash": null, "label": "Product and price data: steps 1, 2" },
+    "rules": { "color": "#6B21A8", "dash": "10 6", "label": "Pricing rules: steps 3, 4" },
+    "review": { "color": "#B45309", "dash": "4 6", "label": "Review and approval: steps 5, 6" }
+  },
+  "scopes": [
+    { "id": "z-prov", "x": 60, "y": 260, "w": 560, "h": 360, "label": "Data provider", "kind": "group" },
+    { "id": "z-az", "x": 700, "y": 260, "w": 1440, "h": 760, "label": "Azure subscription (Central India)", "kind": "subscription" },
+    { "id": "z-hns", "x": 60, "y": 1080, "w": 2080, "h": 360, "label": "HoppNShop", "kind": "tenant" }
+  ],
+  "nodes": [
+    { "id": "prov", "cx": 340, "cy": 420, "title": ["Licensed data", "provider"], "glyph": "FEED", "tile_w": 360 },
+    { "id": "sync", "cx": 900, "cy": 760, "title": ["Price sync", "Azure Functions"], "icon": "func", "tile_w": 360 },
+    { "id": "rules", "cx": 1340, "cy": 760, "title": ["Pricing rules", "Azure Functions"], "icon": "func", "tile_w": 360 },
+    { "id": "review", "cx": 1780, "cy": 760, "title": ["Review app", "Static Web Apps"], "icon": "swa", "tile_w": 360 },
+    { "id": "pg", "cx": 1340, "cy": 420, "title": ["Azure Database", "for PostgreSQL"], "icon": "pg", "tile_w": 360, "standalone": true },
+    { "id": "entra", "cx": 1820, "cy": 420, "title": "Entra ID", "icon": "entra", "tile_w": 280, "standalone": true },
+    { "id": "shop", "cx": 380, "cy": 1240, "title": ["Shopify", "store"], "glyph": "SHOP", "tile_w": 280 },
+    { "id": "team", "cx": 1820, "cy": 1240, "title": ["Pricing", "team"], "icon": "users", "tile_w": 280 }
+  ],
+  "edges": [
+    { "id": "e1", "cat": "data", "from": { "node": "shop", "port": "t" }, "via": [[380, 760]], "to": { "node": "sync", "port": "l" } },
+    { "id": "e2", "cat": "data", "from": { "node": "prov", "port": "r" }, "via": [[900, 420]], "to": { "node": "sync", "port": "t" } },
+    { "id": "e3", "cat": "rules", "from": { "node": "sync", "port": "r" }, "to": { "node": "rules", "port": "l" } },
+    { "id": "e4", "cat": "rules", "from": { "node": "rules", "port": "r" }, "to": { "node": "review", "port": "l" } },
+    { "id": "e5", "cat": "review", "from": { "node": "review", "port": "r" }, "via": [[2060, 760], [2060, 1140], [1820, 1140]], "to": { "node": "team", "port": "t" } },
+    { "id": "e6", "cat": "review", "from": { "node": "team", "port": "l" }, "to": { "node": "shop", "port": "r" } }
+  ],
+  "markers": [
+    { "n": 1, "cat": "data", "cx": 440, "cy": 940, "edge": "e1" },
+    { "n": 2, "cat": "data", "cx": 800, "cy": 480, "edge": "e2" },
+    { "n": 3, "cat": "rules", "cx": 1120, "cy": 700, "edge": "e3" },
+    { "n": 4, "cat": "rules", "cx": 1560, "cy": 700, "edge": "e4" },
+    { "n": 5, "cat": "review", "cx": 2000, "cy": 920, "edge": "e5" },
+    { "n": 6, "cat": "review", "cx": 1100, "cy": 1180, "edge": "e6" }
+  ],
+  "summary": [
+    { "n": 1, "flow": "Shopify store -> price sync:", "outcome": "the Shopify Admin API exports SKUs, prices, and unit costs" },
+    { "n": 2, "flow": "Licensed data provider -> price sync:", "outcome": "the provider delivers matched competitor prices on a schedule" },
+    { "n": 3, "flow": "Price sync -> pricing rules:", "outcome": "accepted matches are joined to costs, GST rates, and margin floors" },
+    { "n": 4, "flow": "Pricing rules -> review app:", "outcome": "recommendations and price-gap status are saved for review" },
+    { "n": 5, "flow": "Review app -> pricing team:", "outcome": "analysts approve or reject prices with the evidence in view" },
+    { "n": 6, "flow": "Pricing team -> Shopify store:", "outcome": "approved prices are pushed through the Shopify Admin API" }
+  ]
+}

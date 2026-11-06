@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PriceIntel AI - HoppNShop pricing review (mockup)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">₹</span>
+      <div>
+        <h1>PriceIntel AI</h1>
+        <p>HoppNShop pilot · Amazon India, Flipkart, Meesho</p>
+      </div>
+    </div>
+    <div class="user">Signed in as <strong>Pricing analyst (demo)</strong></div>
+  </header>
+
+  <div class="mock-banner" role="note">
+    Clickable mockup with illustrative sample data. Products, costs, and competitor prices are invented and are not real marketplace observations. Snapshot: 5 Nov 2026, 18:00 IST.
+  </div>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" class="tab active" data-tab="recs" aria-selected="true">Recommendations</button>
+    <button role="tab" class="tab" data-tab="review" aria-selected="false">Match review <span class="badge" id="reviewCount">0</span></button>
+    <button role="tab" class="tab" data-tab="rules" aria-selected="false">Pricing rules</button>
+    <button role="tab" class="tab" data-tab="audit" aria-selected="false">Audit log</button>
+  </nav>
+
+  <main>
+    <section id="tab-recs" class="panel">
+      <div class="kpis" id="kpis"></div>
+
+      <div class="toolbar">
+        <input type="search" id="search" placeholder="Search SKU or product" aria-label="Search SKU or product">
+        <select id="fCategory" aria-label="Category"><option value="">All categories</option></select>
+        <select id="fStatus" aria-label="Status">
+          <option value="">All statuses</option>
+          <option value="overpriced">Overpriced</option>
+          <option value="competitive">Competitive</option>
+          <option value="underpriced">Underpriced</option>
+          <option value="insufficient">Insufficient data</option>
+        </select>
+        <select id="fDecision" aria-label="Decision">
+          <option value="">All decisions</option>
+          <option value="pending">Pending</option>
+          <option value="approved">Approved</option>
+          <option value="rejected">Rejected</option>
+        </select>
+        <span class="spacer"></span>
+        <button class="btn" id="bulkApprove" disabled>Approve selected</button>
+        <button class="btn primary" id="exportCsv">Export approved (CSV)</button>
+      </div>
+
+      <div class="table-wrap">
+        <table class="grid" id="recTable">
+          <thead>
+            <tr>
+              <th><input type="checkbox" id="selectAll" aria-label="Select all"></th>
+              <th>Product</th>
+              <th class="num">Cost</th>
+              <th class="num">Store price</th>
+              <th class="num">Benchmark</th>
+              <th class="num">Gap</th>
+              <th class="num">Margin floor</th>
+              <th class="num">Recommended</th>
+              <th>Status</th>
+              <th>Decision</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="tab-review" class="panel" hidden>
+      <p class="hint">Listings below the confidence threshold are excluded from benchmarks until a reviewer accepts them. Rejections are kept as training data for the matching model.</p>
+      <div id="reviewList" class="review-list"></div>
+    </section>
+
+    <section id="tab-rules" class="panel" hidden>
+      <form id="rulesForm" class="rules">
+        <fieldset>
+          <legend>Margin rules</legend>
+          <label>Minimum gross margin (%) <input type="number" name="minMargin" min="0" max="90" step="1"></label>
+          <label>Target gross margin (%) <input type="number" name="targetMargin" min="0" max="90" step="1"></label>
+          <p class="formula">Minimum selling price = total variable cost ÷ (1 − minimum gross margin rate)</p>
+        </fieldset>
+        <fieldset>
+          <legend>Benchmark</legend>
+          <label>Benchmark policy
+            <select name="policy">
+              <option value="median">Median of accepted matches</option>
+              <option value="lowest">Lowest valid price</option>
+              <option value="weighted">Confidence-weighted average</option>
+            </select>
+          </label>
+          <label>Match confidence threshold <input type="number" name="threshold" min="0.5" max="0.99" step="0.01"></label>
+          <label class="check"><input type="checkbox" name="landed"> Include delivery charges (landed price)</label>
+          <label>Freshness threshold (hours) <input type="number" name="freshHours" min="1" max="240" step="1"></label>
+        </fieldset>
+        <fieldset>
+          <legend>Recommendation guardrails</legend>
+          <label>Competitive tolerance (± %) <input type="number" name="tolerance" min="0" max="20" step="0.5"></label>
+          <label>Maximum change per update (%) <input type="number" name="maxChange" min="1" max="50" step="1"></label>
+          <label>Rounding
+            <select name="rounding">
+              <option value="9">End in 9 (for example ₹1,099)</option>
+              <option value="10">Nearest ₹10</option>
+              <option value="1">Nearest ₹1</option>
+            </select>
+          </label>
+          <p class="formula">Prices and costs are GST-inclusive in this mockup. Confirm the GST basis with your finance or tax adviser.</p>
+        </fieldset>
+        <div class="form-actions">
+          <button type="button" class="btn" id="resetRules">Reset to defaults</button>
+          <button type="submit" class="btn primary">Save and recalculate</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="tab-audit" class="panel" hidden>
+      <div class="toolbar">
+        <span class="hint">Every match decision, price approval, rule change, and export is recorded.</span>
+        <span class="spacer"></span>
+        <button class="btn" id="resetDemo">Reset demo data</button>
+      </div>
+      <div class="table-wrap">
+        <table class="grid" id="auditTable">
+          <thead><tr><th>Time</th><th>User</th><th>Action</th><th>Details</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="detail" aria-labelledby="detailTitle">
+    <div class="dialog-head">
+      <div>
+        <h2 id="detailTitle"></h2>
+        <p id="detailSub" class="muted"></p>
+      </div>
+      <button class="icon-btn" id="closeDetail" aria-label="Close">✕</button>
+    </div>
+    <div id="detailBody"></div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

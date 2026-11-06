@@ -1,0 +1,6 @@
+# Raw Microsoft icon packs: the diagrams embed what they need. Re-fetch with fetch_icons.py to rebuild.
+docs/architecture/icons/
+node_modules/
+*.log
+.DS_Store
+.env*

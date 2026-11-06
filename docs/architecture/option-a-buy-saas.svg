@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="2188" viewBox="0 0 2200 2188" font-family="Segoe UI, Segoe UI Web, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Option A: Shopify with a price intelligence SaaS app</title><desc id="d">Buy option: the Shopify store syncs products to a vendor-hosted price intelligence app that collects marketplace prices under its own data licences and suggests prices for the pricing team to approve.</desc>
+<metadata>version=1.0; updated=2026-11-05; generator=build_diagram.py; icons=Shopify, the SaaS app, and marketplaces are third-party systems and use neutral glyphs.</metadata>
+<defs>
+<marker id="a-data" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0078D4"/></marker>
+<marker id="a-review" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#B45309"/></marker>
+</defs>
+<rect width="2200" height="2188" fill="#FFFFFF"/>
+<rect x="60" y="260" width="600" height="360" rx="8" fill="#FAFAFA" stroke="#8A8886" stroke-width="1.5"/>
+<text text-anchor="start" font-size="34" font-weight="600" fill="#201F1E" data-chk="76,652"><tspan x="76" y="307">Marketplaces</tspan></text>
+<rect x="600" y="700" width="1000" height="380" rx="8" fill="#F5F9FD" stroke="#8A8886" stroke-width="1.5"/>
+<text text-anchor="start" font-size="34" font-weight="600" fill="#201F1E" data-chk="616,1592"><tspan x="616" y="747">Vendor-hosted SaaS</tspan></text>
+<rect x="60" y="1140" width="2080" height="360" rx="8" fill="#FFFFFF" stroke="#605E5C" stroke-width="2"/>
+<text text-anchor="start" font-size="34" font-weight="600" fill="#201F1E" data-chk="76,2132"><tspan x="76" y="1187">HoppNShop</tspan></text>
+<polyline points="380,1252 380,880 1052,880" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round" marker-end="url(#a-data)"/>
+<polyline points="408,420 1100,420 1100,832" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round" marker-end="url(#a-data)"/>
+<polyline points="1148,880 1900,880 1900,1252" fill="none" stroke="#B45309" stroke-width="3" stroke-linejoin="round" stroke-dasharray="4 6" marker-end="url(#a-review)"/>
+<polyline points="1852,1300 428,1300" fill="none" stroke="#B45309" stroke-width="3" stroke-linejoin="round" stroke-dasharray="4 6" marker-end="url(#a-review)"/>
+<rect x="312" y="372" width="96" height="96" rx="12" fill="#FFFFFF" stroke="#605E5C" stroke-width="2"/>
+<text text-anchor="middle" font-size="34" font-weight="600" fill="#201F1E" data-chk="316,404"><tspan x="360" y="432">WEB</tspan></text>
+<text text-anchor="middle" font-size="34" font-weight="600" fill="#201F1E" data-chk="140,580"><tspan x="360" y="514">Amazon India, Flipkart,</tspan><tspan x="360" y="558">and Meesho</tspan></text>
+<rect x="1052" y="832" width="96" height="96" rx="12" fill="#FFFFFF" stroke="#605E5C" stroke-width="2"/>
+<text text-anchor="middle" font-size="34" font-weight="600" fill="#201F1E" data-chk="1056,1144"><tspan x="1100" y="892">SaaS</tspan></text>
+<text text-anchor="middle" font-size="34" font-weight="600" fill="#201F1E" data-chk="920,1280"><tspan x="1100" y="974">Price intelligence</tspan><tspan x="1100" y="1018">app</tspan></text>
+<rect x="332" y="1252" width="96" height="96" rx="12" fill="#FFFFFF" stroke="#605E5C" stroke-width="2"/>
+<text text-anchor="middle" font-size="34" font-weight="600" fill="#201F1E" data-chk="336,424"><tspan x="380" y="1312">SHOP</tspan></text>
+<text text-anchor="middle" font-size="34" font-weight="600" fill="#201F1E" data-chk="240,520"><tspan x="380" y="1394">Shopify</tspan><tspan x="380" y="1438">store</tspan></text>
+<image x="1852" y="1252" width="96" height="96" href="data:image/svg+xml;base64,PHN2ZyBpZD0iZTI0NjcxZjYtZjUwMS00OTUyLWEyZGItOGIwYjFkMzI5YzE3IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJlOTI5MDFiLWVjMzMtNGM2NS1hZGYxLTliMGVlZDA2ZDY3NyIgeDE9IjkiIHkxPSI2Ljg4IiB4Mj0iOSIgeTI9IjIwLjQ1IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIwLjIyIiBzdG9wLWNvbG9yPSIjMzJkNGY1IiAvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzE5OGFiMyIgLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iYjQ2ZmMyNDYtMjVkOC00Mzk4LTg3NzktMTA0MmU4Y2FjYWU3IiB4MT0iOC42MSIgeTE9Ii0wLjQiIHgyPSI5LjYiIHkyPSIxMS45MiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMC4yMiIgc3RvcC1jb2xvcj0iIzMyZDRmNSIgLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxOThhYjMiIC8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHRpdGxlPkljb24taWRlbnRpdHktMjMwPC90aXRsZT48cGF0aCBkPSJNMTUuNzIsMThhMS40NSwxLjQ1LDAsMCwwLDEuNDUtMS40NS40Ny40NywwLDAsMCwwLS4xN0MxNi41OSwxMS44MSwxNCw4LjA5LDksOC4wOVMxLjM0LDExLjI0LjgzLDE2LjM5QTEuNDYsMS40NiwwLDAsMCwyLjE0LDE4SDE1LjcyWiIgZmlsbD0idXJsKCNiZTkyOTAxYi1lYzMzLTRjNjUtYWRmMS05YjBlZWQwNmQ2NzcpIiAvPjxwYXRoIGQ9Ik05LDkuMTdhNC41OSw0LjU5LDAsMCwxLTIuNDgtLjczTDksMTQuODZsMi40NC02LjM4QTQuNTMsNC41MywwLDAsMSw5LDkuMTdaIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjgiIC8+PGNpcmNsZSBjeD0iOS4wMSIgY3k9IjQuNTgiIHI9IjQuNTgiIGZpbGw9InVybCgjYjQ2ZmMyNDYtMjVkOC00Mzk4LTg3NzktMTA0MmU4Y2FjYWU3KSIgLz48L3N2Zz4=" preserveAspectRatio="xMidYMid meet"/>
+<text text-anchor="middle" font-size="34" font-weight="600" fill="#201F1E" data-chk="1760,2040"><tspan x="1900" y="1394">Pricing</tspan><tspan x="1900" y="1438">team</tspan></text>
+<text text-anchor="start" font-size="53" font-weight="600" fill="#201F1E"><tspan x="60" y="108">Option A: Shopify with a price intelligence SaaS app</tspan></text>
+<text text-anchor="start" font-size="34" font-weight="400" fill="#605E5C"><tspan x="60" y="161">Buy: the vendor collects, matches, and suggests prices; HoppNShop approves</tspan></text>
+<text text-anchor="end" font-size="34" font-weight="600" fill="#605E5C"><tspan x="2140" y="91">Architecture option A</tspan></text>
+<text text-anchor="end" font-size="34" font-weight="400" fill="#605E5C"><tspan x="2140" y="135">Buy</tspan></text>
+<text text-anchor="end" font-size="34" font-weight="400" fill="#605E5C"><tspan x="2140" y="179">Updated 2026-11-05</tspan></text>
+<circle cx="440" cy="1020" r="29" fill="#FFFFFF" stroke="#0078D4" stroke-width="3"/><text x="440" y="1032" text-anchor="middle" font-size="34" font-weight="700" fill="#0078D4">1</text>
+<circle cx="900" cy="360" r="29" fill="#FFFFFF" stroke="#0078D4" stroke-width="3"/><text x="900" y="372" text-anchor="middle" font-size="34" font-weight="700" fill="#0078D4">2</text>
+<circle cx="1720" cy="820" r="29" fill="#FFFFFF" stroke="#B45309" stroke-width="3"/><text x="1720" y="832" text-anchor="middle" font-size="34" font-weight="700" fill="#B45309">3</text>
+<circle cx="1100" cy="1240" r="29" fill="#FFFFFF" stroke="#B45309" stroke-width="3"/><text x="1100" y="1252" text-anchor="middle" font-size="34" font-weight="700" fill="#B45309">4</text>
+<rect x="60" y="1540" width="2080" height="349" rx="8" fill="#FAFAFA" stroke="#8A8886" stroke-width="1.5"/>
+<text text-anchor="start" font-size="34" font-weight="600" fill="#201F1E"><tspan x="84" y="1593">Data flow summary</tspan></text>
+<circle cx="118" cy="1647" r="24" fill="#FFFFFF" stroke="#0078D4" stroke-width="3"/><text x="118" y="1659" text-anchor="middle" font-size="34" font-weight="700" fill="#0078D4">1</text>
+<text x="167" y="1656" font-size="34" fill="#201F1E" data-chk="60,2124"><tspan font-weight="600">Shopify store -&gt; price intelligence app:</tspan> the Shopify app syncs products, variants, and costs</text>
+<circle cx="118" cy="1708" r="24" fill="#FFFFFF" stroke="#0078D4" stroke-width="3"/><text x="118" y="1720" text-anchor="middle" font-size="34" font-weight="700" fill="#0078D4">2</text>
+<text x="167" y="1717" font-size="34" fill="#201F1E" data-chk="60,2124"><tspan font-weight="600">Amazon India, Flipkart, and Meesho -&gt; price intelligence app:</tspan> vendor matches prices</text>
+<circle cx="118" cy="1769" r="24" fill="#FFFFFF" stroke="#B45309" stroke-width="3"/><text x="118" y="1781" text-anchor="middle" font-size="34" font-weight="700" fill="#B45309">3</text>
+<text x="167" y="1778" font-size="34" fill="#201F1E" data-chk="60,2124"><tspan font-weight="600">Price intelligence app -&gt; pricing team:</tspan> gaps, alerts, and suggested prices appear in the dashboard</text>
+<circle cx="118" cy="1830" r="24" fill="#FFFFFF" stroke="#B45309" stroke-width="3"/><text x="118" y="1842" text-anchor="middle" font-size="34" font-weight="700" fill="#B45309">4</text>
+<text x="167" y="1839" font-size="34" fill="#201F1E" data-chk="60,2124"><tspan font-weight="600">Pricing team -&gt; Shopify store:</tspan> approved prices are updated in Shopify, manually or by the app</text>
+<rect x="60" y="1909" width="2080" height="219" rx="8" fill="#FAFAFA" stroke="#8A8886" stroke-width="1.5"/>
+<text text-anchor="start" font-size="34" font-weight="600" fill="#201F1E"><tspan x="84" y="1962">Legend</tspan></text>
+<polyline points="100,2018 187,2018" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round" marker-end="url(#a-data)"/>
+<text text-anchor="start" font-size="34" font-weight="400" fill="#201F1E" data-chk="100,2132"><tspan x="207" y="2027">Product and price data: steps 1, 2</tspan></text>
+<polyline points="1120,2018 1207,2018" fill="none" stroke="#B45309" stroke-width="3" stroke-linejoin="round" stroke-dasharray="4 6" marker-end="url(#a-review)"/>
+<text text-anchor="start" font-size="34" font-weight="400" fill="#201F1E" data-chk="1120,2132"><tspan x="1227" y="2027">Suggestions and approval: steps 3, 4</tspan></text>
+<circle cx="129" cy="2079" r="24" fill="#FFFFFF" stroke="#605E5C" stroke-width="3"/><text x="129" y="2091" text-anchor="middle" font-size="34" font-weight="700" fill="#605E5C">n</text>
+<text text-anchor="start" font-size="34" font-weight="400" fill="#201F1E" data-chk="100,2132"><tspan x="178" y="2088">Step in the flow summary</tspan></text>
+</svg>

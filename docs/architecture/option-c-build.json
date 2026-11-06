@@ -1,0 +1,93 @@
+{
+  "id": "option-c-build",
+  "title": "Option C: custom PriceIntel AI platform on Azure",
+  "subtitle": "HoppNShop catalogue matched against Amazon India, Flipkart, and Meesho",
+  "status": ["Architecture option C", "Build", "Updated 2026-11-05"],
+  "description": "Executive view of PriceIntel AI: catalogue import, permitted marketplace data collection, AI product matching, deterministic margin-aware pricing, and human approval before any price is published back to the HoppNShop store.",
+  "version": "1.0",
+  "updated": "2026-11-06",
+  "generator": "build_diagram.py",
+  "icons_note": "Azure Architecture Icons V25 and Microsoft Entra icons (Oct 2023). Marketplace data sources and the store catalogue are external systems and use neutral glyphs.",
+  "canvas": { "width": 2600 },
+  "proper_nouns": ["Shopify Admin API", "Admin", "Option", "C", "Shopify", "PriceIntel", "AI", "HoppNShop", "SKUs", "SKU", "Amazon", "India", "Flipkart", "Meesho", "Azure", "Azure OpenAI", "Azure AI Search", "AI Search", "Container Apps", "Azure Functions", "Service Bus", "Key Vault", "Application Insights", "Entra", "Entra ID", "PostgreSQL", "Blob Storage", "CSV", "Excel", "Central India", "Azure Database for PostgreSQL", "URLs", "API", "APIs"],
+  "icons": {
+    "users": "icons/azure/Azure_Public_Service_Icons/Icons/identity/10230-icon-service-Users.svg",
+    "aca": "icons/azure/Azure_Public_Service_Icons/Icons/other/02989-icon-service-Container-Apps-Environments.svg",
+    "func": "icons/azure/Azure_Public_Service_Icons/Icons/compute/10029-icon-service-Function-Apps.svg",
+    "aoai": "icons/azure/Azure_Public_Service_Icons/Icons/ai + machine learning/03438-icon-service-Azure-OpenAI.svg",
+    "search": "icons/azure/Azure_Public_Service_Icons/Icons/web/10044-icon-service-Cognitive-Search.svg",
+    "pg": "icons/azure/Azure_Public_Service_Icons/Icons/databases/10131-icon-service-Azure-Database-PostgreSQL-Server.svg",
+    "blob": "icons/azure/Azure_Public_Service_Icons/Icons/storage/10086-icon-service-Storage-Accounts.svg",
+    "bus": "icons/azure/Azure_Public_Service_Icons/Icons/integration/10836-icon-service-Azure-Service-Bus.svg",
+    "kv": "icons/azure/Azure_Public_Service_Icons/Icons/security/10245-icon-service-Key-Vaults.svg",
+    "appi": "icons/azure/Azure_Public_Service_Icons/Icons/monitor/00012-icon-service-Application-Insights.svg",
+    "entra": "icons/entra/Microsoft Entra architecture icons - Oct 2023/Microsoft Entra color icons SVG/Microsoft Entra ID color icon.svg"
+  },
+  "categories": {
+    "data": { "color": "#0078D4", "dash": null, "label": "Catalogue and market data: steps 1, 2, 3, 4" },
+    "ai": { "color": "#6B21A8", "dash": "10 6", "label": "AI matching and pricing: steps 5, 6, 7" },
+    "review": { "color": "#B45309", "dash": "4 6", "label": "Review and approval: steps 8, 9, 10" }
+  },
+  "scopes": [
+    { "id": "z-src", "x": 60, "y": 400, "w": 360, "h": 380, "label": "External sources", "kind": "group" },
+    { "id": "z-az", "x": 480, "y": 320, "w": 2020, "h": 1200, "label": "Azure subscription (Central India)", "kind": "subscription" },
+    { "id": "z-ai", "x": 1200, "y": 400, "w": 520, "h": 380, "label": "AI services", "kind": "group" },
+    { "id": "z-data", "x": 1760, "y": 400, "w": 700, "h": 380, "label": "Data and evidence", "kind": "group" },
+    { "id": "z-plat", "x": 520, "y": 1120, "w": 1160, "h": 360, "label": "Platform services", "kind": "group" },
+    { "id": "z-hns", "x": 60, "y": 1580, "w": 2480, "h": 360, "label": "HoppNShop", "kind": "tenant" }
+  ],
+  "nodes": [
+    { "id": "sources", "cx": 240, "cy": 560, "title": ["Marketplace", "data sources"], "glyph": "API", "tile_w": 280 },
+    { "id": "import", "cx": 700, "cy": 940, "title": ["Catalogue import", "Azure Functions"], "icon": "func", "tile_w": 360 },
+    { "id": "collect", "cx": 1080, "cy": 940, "title": ["Collectors", "Container Apps"], "icon": "aca", "tile_w": 320 },
+    { "id": "match", "cx": 1460, "cy": 940, "title": ["Matching engine", "Container Apps"], "icon": "aca", "tile_w": 320, "size": 120 },
+    { "id": "pricing", "cx": 1840, "cy": 940, "title": ["Pricing engine", "Container Apps"], "icon": "aca", "tile_w": 320, "size": 120 },
+    { "id": "dash", "cx": 2260, "cy": 940, "title": ["Review", "dashboard"], "icon": "aca", "tile_w": 320 },
+    { "id": "aoai", "cx": 1320, "cy": 560, "title": ["Azure", "OpenAI"], "icon": "aoai", "tile_w": 200, "standalone": true },
+    { "id": "search", "cx": 1600, "cy": 560, "title": ["Azure AI", "Search"], "icon": "search", "tile_w": 200, "standalone": true },
+    { "id": "pg", "cx": 1940, "cy": 560, "title": ["Azure Database", "for PostgreSQL"], "icon": "pg", "tile_w": 320, "standalone": true },
+    { "id": "blob", "cx": 2280, "cy": 560, "title": ["Blob Storage", "evidence"], "icon": "blob", "tile_w": 280, "standalone": true },
+    { "id": "entra", "cx": 680, "cy": 1300, "title": "Entra ID", "icon": "entra", "tile_w": 240, "standalone": true },
+    { "id": "kv", "cx": 960, "cy": 1300, "title": "Key Vault", "icon": "kv", "tile_w": 240, "standalone": true },
+    { "id": "bus", "cx": 1240, "cy": 1300, "title": "Service Bus", "icon": "bus", "tile_w": 240, "standalone": true },
+    { "id": "appi", "cx": 1520, "cy": 1300, "title": ["Application", "Insights"], "icon": "appi", "tile_w": 240, "standalone": true },
+    { "id": "store", "cx": 380, "cy": 1740, "title": ["Shopify", "store"], "glyph": "SHOP", "tile_w": 280 },
+    { "id": "team", "cx": 2260, "cy": 1740, "title": ["Pricing", "team"], "icon": "users", "tile_w": 280 }
+  ],
+  "edges": [
+    { "id": "e1", "cat": "data", "from": { "node": "store", "port": "t" }, "via": [[380, 940]], "to": { "node": "import", "port": "l" } },
+    { "id": "e2", "cat": "data", "from": { "node": "import", "port": "r" }, "to": { "node": "collect", "port": "l" } },
+    { "id": "e3", "cat": "data", "from": { "node": "sources", "port": "r" }, "via": [[1080, 560]], "to": { "node": "collect", "port": "t" } },
+    { "id": "e4", "cat": "data", "from": { "node": "collect", "port": "r" }, "to": { "node": "match", "port": "l" } },
+    { "id": "e5", "cat": "ai", "from": { "node": "match", "port": "t" }, "to": { "scope": "z-ai", "point": [1460, 780] } },
+    { "id": "e6", "cat": "ai", "from": { "node": "match", "port": "r" }, "to": { "node": "pricing", "port": "l" } },
+    { "id": "e7", "cat": "ai", "from": { "node": "pricing", "port": "t" }, "to": { "scope": "z-data", "point": [1840, 780] } },
+    { "id": "e8", "cat": "review", "from": { "scope": "z-data", "point": [2260, 780] }, "to": { "node": "dash", "port": "t" } },
+    { "id": "e9", "cat": "review", "from": { "node": "dash", "port": "l" }, "via": [[2060, 940], [2060, 1640], [2260, 1640]], "to": { "node": "team", "port": "t" } },
+    { "id": "e10", "cat": "review", "from": { "node": "team", "port": "l" }, "to": { "node": "store", "port": "r" } }
+  ],
+  "markers": [
+    { "n": 1, "cat": "data", "cx": 320, "cy": 1300, "edge": "e1" },
+    { "n": 2, "cat": "data", "cx": 900, "cy": 880, "edge": "e2" },
+    { "n": 3, "cat": "data", "cx": 700, "cy": 500, "edge": "e3" },
+    { "n": 4, "cat": "data", "cx": 1260, "cy": 880, "edge": "e4" },
+    { "n": 5, "cat": "ai", "cx": 1520, "cy": 830, "edge": "e5" },
+    { "n": 6, "cat": "ai", "cx": 1660, "cy": 880, "edge": "e6" },
+    { "n": 7, "cat": "ai", "cx": 1900, "cy": 830, "edge": "e7" },
+    { "n": 8, "cat": "review", "cx": 2320, "cy": 830, "edge": "e8" },
+    { "n": 9, "cat": "review", "cx": 2000, "cy": 1340, "edge": "e9" },
+    { "n": 10, "cat": "review", "cx": 1200, "cy": 1680, "edge": "e10" }
+  ],
+  "summary": [
+    { "n": 1, "flow": "Shopify store -> catalogue import:", "outcome": "SKUs, specs, images, and costs arrive by the Shopify Admin API or CSV" },
+    { "n": 2, "flow": "Catalogue import -> collectors:", "outcome": "clean SKUs are queued for discovery on a per-category schedule" },
+    { "n": 3, "flow": "Marketplace data sources -> collectors:", "outcome": "permitted APIs and licensed feeds return prices and offers" },
+    { "n": 4, "flow": "Collectors -> matching engine:", "outcome": "candidate listings arrive with source URLs and timestamps" },
+    { "n": 5, "flow": "Matching engine -> AI services:", "outcome": "text and image embeddings plus attribute extraction score each match" },
+    { "n": 6, "flow": "Matching engine -> pricing engine:", "outcome": "only matches above the confidence threshold feed the benchmark" },
+    { "n": 7, "flow": "Pricing engine -> data and evidence:", "outcome": "deterministic rules save benchmarks, status, and margin-safe prices" },
+    { "n": 8, "flow": "Data and evidence -> review dashboard:", "outcome": "drill-down shows match evidence, price history, and rationale" },
+    { "n": 9, "flow": "Review dashboard -> pricing team:", "outcome": "alerts and low-confidence items are routed for human review" },
+    { "n": 10, "flow": "Pricing team -> Shopify store:", "outcome": "only approved prices are exported or published, with an audit trail" }
+  ]
+}
